@@ -38,50 +38,62 @@
     <div class="container">
       <h2>Recent Polls</h2>
       <div id="pollListing">
-      <% var pollIndex=-1 %>
+        <% var recentIndex=-1 %>
         <% posts.forEach((post)=>{ %>
         <% for(var i=0; i < post.polls.length; i++) { %>
-          <% pollIndex++ %>
-          <div id='div-<%=pollIndex%>'>
-            <p class='hidden' id="hidden-index"><%=pollIndex%></p>
-            <div class='row' id="poll">
-              <div class='col-xs-10'>
-                <a href="#<%= post._id%>-<%=pollIndex%>" data-toggle="modal" id="poll-shell">
-                <p class="poll" id="poll-title"><%= post.polls[i].title%>
-                  <span class="badge" id="badge-poll"><%= post.polls[i].pollVotes%></span>
-                 </p>
-                </a>
-              </div>
-            </div>
+        <% recentIndex++ %>
+        <div class='row' id="poll">
+          <div class='col-xs-10'>
+            <a href="#<%= post._id%>-<%=recentIndex%>" data-toggle="modal" id="poll-shell">
+            <p class="poll" id="poll-title"><%= post.polls[i].title%>
+              <span class="badge" id="badge-poll"><%= post.polls[i].pollVotes%></span>
+             </p>
+            </a>
           </div>
+        </div>
+      </div>
     
-    <div id="<%= post._id%>-<%=pollIndex%>" role="dialog" class="modal">
+    <div id="<%= post._id%>-<%=recentIndex%>" role="dialog" class="modal fade">
       <div class="modal-content" id="logbox">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h1 id="signup-heading"><%= post.polls[i].question%></h1>
         <div class="btn-group-vertical text-center" role="group" aria-label="Vertical button group" id="poll-frame">
           
-        <% var opt = post.polls[i].options %>
-        <% var optionsIndex=-1 %>
-        <% for(var x = 0; x < opt.length; x++){ %>
-        <% optionsIndex++ %>
+          <% var opt = post.polls[i].options %>
+          <% var optionsIndex=-1 %>
+          <% for(var x = 0; x < opt.length; x++){ %>
+          <% optionsIndex++ %>
         
-        <form method="post" action="/addoptionvotes" id="form-opt">
-          <input class="hidden" name="id" value="<%= post._id%>"/>
-          <input class="hidden" name="options" value="<%= post.polls[i].options%>"  />
-          <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
-          <input class="hidden" name="question" value="<%= post.polls[i].question%>" />
-          <input class="hidden" name="optionIndex" value="<%= optionsIndex%>" />
-          <input type="submit" value="<%= post.polls[i].options[x] %>" class="poll-option" />
-        </form>
-        <% } %>
+          <form method="post" action="/addoptionvotes" id="form-opt">
+            <input class="hidden" name="id" value="<%= post._id%>"/>
+            <input class="hidden" name="options" value="<%= post.polls[i].options%>"  />
+            <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
+            <input class="hidden" name="question" value="<%= post.polls[i].question%>" />
+            <input class="hidden" name="optionIndex" value="<%= optionsIndex%>" />
+            <input type="submit" value="<%= post.polls[i].options[x] %>" class="poll-option" />
+          </form>
+          <% } %>
+        
+          <% var recentOptIndex = recentIndex+1 %>
+          <h2 class="text-center" id="newOptionP">Don't like the options? Add your own!</h2>
+          <form method="post" action="/additionalopt">
+            <input class="hidden" name="id" value="<%= post._id%>"/>
+            <input class="hidden" name="question" value="<%= post.polls[i].question%>" />
+            <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
+            <input class="hidden" name="optionIndex" value="<%= recentOptIndex %>" />
+            <div class="input-group" id="input-add">
+              <input class="form-control formAdd" id="formInput" name="addOption" />
+              <div class="input-group-btn">
+                <input type="submit" id="formBtn" class="btn form-control formAdd" value="SEND" />
+              </div>
+            </div>
+          </form>
         
         </div>
       </div>
     </div>
     <% } %>
-  <% }) %>
-    </div>
+    <% }) %>
   </div>
 
     <%- include('partials/login') %> 
