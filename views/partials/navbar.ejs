@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <p class="navbar-brand" href="#home">PenguinPolls</p>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+       
+      <% if(typeof userTitle ==='undefined'){ %>
+          <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="menu" href="#sign-in" data-toggle="modal">Sign In</a></li>
+          <li><a class="menu" href="#register" data-toggle="modal">Register</a></li>
+        </ul>
+          
+      <% } else { %>
+           <ul class="nav navbar-nav">
+          <li><a href="/success">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="nav-status" href="#profile" data-toggle"modal">Signed in as <%= userTitle %> </li>
+          <li><a class="menu" href="#new-poll" data-toggle="modal">Create New Poll</a></li>
+          <li><a class="menu" href="/logout" data-toggle="modal">Logout</a></li>
+        </ul>
+       
+      <% } %>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>

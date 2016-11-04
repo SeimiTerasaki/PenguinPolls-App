@@ -1,0 +1,93 @@
+<html lang="en">
+  <head>
+    <title>PenguinPoll App--</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/poll-app.css" type="text/css">
+    <script src="https://use.fontawesome.com/0acc5953fa.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script>
+    window.onload = function() {
+    var pollLabel = document.getElementById("chart-labels").textContent;
+    var pollData = document.getElementById("chart-data").innerHTML;
+   
+    var re = /\s*,\s*/;
+    var label = pollLabel.split(re);
+    
+    var data = pollData.split(',').map(Number)
+    var backgroundColors=[];
+    
+    var colors = ["#2ecc71", "#3498db","#9b59b6","#ff4c4c","#34495e","#ff8b94", "#c2f2d0","#95a5a6","#e67e22","#f1c40f"];
+    for(var x = 0; x <= label.length; x++){
+    backgroundColors.push(colors[x]);
+    }
+  
+      var data = {
+        type: 'pie',
+        data: {
+          labels: label,
+          datasets: [{
+            backgroundColor: backgroundColors,
+            data: data
+          }]
+        },
+         options: {
+         responsive: true,
+         maintainAspectRatio: true,
+         events:["mousemove", "mouseout", "touchend"],
+        }
+      }
+      
+      var ctx = document.getElementById("myChart").getContext('2d');
+      Chart.defaults.global.defaultFontSize = 20;
+      var myChart = new Chart(ctx, data);
+    }
+    
+    function addVote(){
+      var value = document.getElementById("btn-vote").innerHTML;
+      var x = Number(value);
+      console.log(x++);
+    }
+  </script>  
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+      <div class="container text-center" id="resultbox">
+
+        <% for(var i=0; i < results.polls.length; i++) { %>
+        <h1 class="text-center" id="result-heading"><%= results.polls[i].question%></h1>
+       
+        <canvas id="myChart"></canvas>
+        <div class="btn-container">
+ 
+          <div class="hidden" id="chart-labels"><%= results.polls[i].options%></div>
+          <div class="hidden" id="chart-title"><%= results.polls[i].title%></div>
+          <div class="hidden" id="chart-data"><%= results.polls[i].optionVotes%></div>
+          <div class="hidden" id="chart-id"><%= results._id%></div>
+          
+          <button class="btn btn-default btn-lg" id="btn-vote"><i class="fa fa-thumbs-o-up"></i> Vote! (<span id="poll-votes"><%= results.polls[i].pollVotes%></span>)</button>
+          <button class="btn btn-default btn-lg" id="share-twitter" type="submit">
+            <a href="https://twitter.com/intent/tweet?text=Check out this cool app for creating and voting on polls! https://penguinpolls.heroku.app"">
+              <i class="fa fa-twitter"></i> Share on Twitter</a></button>
+          <button class="btn btn-default btn-lg" id="share-facebook" type="submit">
+            <a href="http://www.facebook.com/sharer.php?u=https://penguinpolls.heroku.app"">
+              <i class="fa fa-facebook"></i>  Share on Facebook</a></button>
+        </div>
+      <% } %>
+
+    </div>
+    
+    <%- include('partials/new-poll') %>
+    
+   <%- include('partials/login') %> 
+  
+    <%- include('partials/register') %>
+    
+    <script type="text/javascript" src="controllers/voteBtn.js"></script>
+    <script type="text/javascript" src="controllers/viewControllers.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

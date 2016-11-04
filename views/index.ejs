@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>PenguinPoll App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/poll-app.css" type="text/css">
+    <script src="https://use.fontawesome.com/0acc5953fa.js"></script>
+    <script>
+
+    </script>
+  </head>
+<body>
+
+<%- include('partials/navbar') %>
+
+  <div class="container text-center" id="main-frame">
+    <h1 class="penguin-text" id="penguin-login">PenguinPolls</h1>
+    <div class="jumbotron">
+      <div class="item">
+        <img src="img/animal-160760_1280.png" />
+      </div>
+
+      <div class="item">
+        <div class="btn-container">
+          <p>Create Polls, Share Polls, Browse Polls</p>
+          <p>By Seimi Terasaki</p>
+          <button class="btn btn-default btn-lg" id="share-twitter" type="submit">
+            <a href="https://twitter.com/intent/tweet?text=Check out this cool app for creating and voting on polls! https://penguinpolls.heroku.app">
+              <i class="fa fa-twitter"></i> Share on Twitter</a></button>
+          <button class="btn btn-default btn-lg" id="share-facebook" type="submit">
+            <a href="http://www.facebook.com/sharer.php?u=https://penguinpolls.heroku.app">
+              <i class="fa fa-facebook"></i>  Share on Facebook</a></button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <h2>Recent Polls</h2>
+      <div id="pollListing">
+      <% var pollIndex=-1 %>
+        <% posts.forEach((post)=>{ %>
+        <% for(var i=0; i < post.polls.length; i++) { %>
+          <% pollIndex++ %>
+          <div id='div-<%=pollIndex%>'>
+            <p class='hidden' id="hidden-index"><%=pollIndex%></p>
+            <div class='row' id="poll">
+              <div class='col-xs-10'>
+                <a href="#<%= post._id%>-<%=pollIndex%>" data-toggle="modal" id="poll-shell">
+                <p class="poll" id="poll-title"><%= post.polls[i].title%>
+                  <span class="badge" id="badge-poll"><%= post.polls[i].pollVotes%></span>
+                 </p>
+                </a>
+              </div>
+            </div>
+          </div>
+    
+    <div id="<%= post._id%>-<%=pollIndex%>" role="dialog" class="modal">
+      <div class="modal-content" id="logbox">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 id="signup-heading"><%= post.polls[i].question%></h1>
+        <div class="btn-group-vertical text-center" role="group" aria-label="Vertical button group" id="poll-frame">
+          
+        <% var opt = post.polls[i].options %>
+        <% var optionsIndex=-1 %>
+        <% for(var x = 0; x < opt.length; x++){ %>
+        <% optionsIndex++ %>
+        
+        <form method="post" action="/addoptionvotes" id="form-opt">
+          <input class="hidden" name="id" value="<%= post._id%>"/>
+          <input class="hidden" name="options" value="<%= post.polls[i].options%>"  />
+          <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
+          <input class="hidden" name="question" value="<%= post.polls[i].question%>" />
+          <input class="hidden" name="optionIndex" value="<%= optionsIndex%>" />
+          <input type="submit" value="<%= post.polls[i].options[x] %>" class="poll-option" />
+        </form>
+        <% } %>
+        
+        </div>
+      </div>
+    </div>
+    <% } %>
+  <% }) %>
+    </div>
+  </div>
+
+    <%- include('partials/login') %> 
+  
+    <%- include('partials/register') %>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="controllers/viewControllers.js"></script>
+  </body>
+</html>

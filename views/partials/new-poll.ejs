@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app>
+  <head>
+    <title>PenguinPoll App--</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/poll-app.css" type="text/css">
+  </head>
+<body>
+<div id="new-poll" role="dialog" aria-hidden="true" class="modal" data-backdrop="static" data-keyboard="false" ng-app="newPoll">
+    <div class="modal-content text-center" div id="logbox">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h1 id="signup-heading">create new poll</h1>
+      <form id="form-poll" method="post" action="/addpoll" class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-xs-2">Title:</label>
+          <div class="col-xs-10">
+            <input name="title" class="form-control" type="text" required="required" placeholder="enter title" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-2">Question:</label>
+          <div class="col-xs-10">
+            <input name="question" class="form-control" type="text" required="required" placeholder="enter question" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-2">Option:</label>
+          <div class="col-xs-10">
+            <input name="option" class="form-control" type="text" required="required" placeholder="enter option" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-xs-2">Option:</label>
+          <div class="col-xs-10">
+            <input name="option" class="form-control" type="text" required="required" placeholder="enter option" />
+          </div>
+        </div>
+        <div class="form-group" id="optionInput">
+          <label class="control-label col-xs-2">Option:</label>
+          <div class="col-xs-10">
+            <input name="option" class="form-control" type="text" required="required" placeholder="enter option" />
+          </div>
+        </div>
+        <input id="pollBtn" type="submit" value="create new poll!" class="inputButton" />
+      </form>
+    
+        
+        <button class="inputButton" id="addOpt">add more options!</button>
+        <button class="inputButton" id="cancel">remove options!</button>
+      
+        
+
+    </div>
+  </div>
+</body>
+</html>

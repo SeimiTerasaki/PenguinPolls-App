@@ -1,0 +1,21 @@
+
+  <div id="sign-in" role="dialog" class="modal">
+      <div class="modal-content text-center" div id="logbox">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+          <form id="signup" method="post" action="/auth/local">
+            <h1 id="signup-heading">account login</h1>
+            <input name="username" type="text" placeholder="enter your username" class="input pass" />
+            <input name="password" type="password" placeholder="enter your password" required="required" class="input pass" />
+            <input type="submit" value="Sign me in!" class="inputButton" />
+          </form>
+        <p id="sign-p">Don't have an account? Sign up <a href="#register" data-toggle="modal" id="here">here</a></p>
+        <p id="sign-p">Or sign in with the following account</p>
+        <div class="btn-container">
+          <button class="btn btn-primary btn-md" id="fb-signin"><a href="/auth/facebook">
+              <i class="fa fa-facebook fa-fw fa-1x"></i>Facebook</a></button>
+          <button class="btn btn-primary btn-md" id="github-signin"><a href="/auth/github">
+              <i class="fa fa-github fa-fw fa-1x"></i>Github</a></button>
+         </div>
+        </div>
+      </div>

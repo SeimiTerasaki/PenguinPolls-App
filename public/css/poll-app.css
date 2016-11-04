@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+
+@import url('https://fonts.googleapis.com/css?family=Chango');
+
+html, body {
+	font-family: 'Roboto', sans-serif;
+	height: 100%;
+	width: 100%;
+}
+
+#nav-status{
+  display: block;
+  padding: 15px;
+  color: #FFA000;
+}
+
+#main-frame{
+	color: #00BCD4;
+	margin-top: 50px;
+}
+
+#penguin-login{
+	font-size: 4vmax;
+}
+
+.penguin-text{
+	padding: 0;
+	margin: 30px auto;
+	font-weight: 500;
+	font-size: 3vmax;
+	color: #FFA000;
+  font-family: 'Chango', cursive;
+}
+
+.navbar-brand{
+	font-weight: 500;
+	color: #FFA000;
+  font-family: 'Chango', cursive;
+}
+
+a{
+  color:#fff;
+}
+
+a:focus {
+    outline: none;
+    outline-offset: 0px;
+}
+
+a:focus,
+a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+i{
+  margin-right: 5px;
+}
+
+h2{
+  font-size: 1.8vmax;
+}
+
+.jumbotron p{
+  font-size: 1.8vmax;
+}
+
+p{
+  font-size: 80%;
+}
+
+/****** Login ******/
+
+#fb-signin{
+  background-color: #286090;
+  border-color: #204d74;
+  padding: 8px 15px 8px 15px;
+  margin: 5px 10px;
+  color: #fff;
+}
+
+#github-signin{
+  background-color: #6e5494;
+  border-color: #634b85;
+  padding: 8px 15px 8px 15px;
+  margin: 5px 10px;
+  color:#fff;
+}
+
+#here{
+  color: #337ab7;
+}
+
+#here:hover{
+  text-decoration: underline;
+}
+
+
+/****** Header Styling ******/
+img {
+  height: 15vmax;
+}
+
+.item{
+    display: inline-block;
+    margin: 0px auto 0px auto;
+    vertical-align: middle;
+}
+
+.btn-container {	/* Styling for the div that contains the buttons */
+	margin: auto;
+	text-align: center;
+}
+
+.btn {
+  margin: 5px 5px 0 5px;
+	color: white;
+	background-color: #00BCD4;
+	display: inline-block;
+	border: 0;
+	font-size: 90%;
+	border-radius: 3px;
+	padding: 10px 15px 10px 15px;
+	width: auto;
+	font-weight: 500;
+}
+
+.btn:focus {	/* Remove outline when hovering over button */
+	outline: none;
+}
+
+.btn:active {	/* Scale the button down by 10% when clicking on button */
+	transform: scale(0.9, 0.9);
+	-webkit-transform: scale(0.9, 0.9);
+	-moz-transform: scale(0.9, 0.9);
+}
+
+/****** Polls ****/
+
+#poll-shell{
+  color: #777;
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 1.6vmax;
+}
+
+#poll{
+  background: #ffd1dc;
+  border: 2px solid #fcbdcc;
+  transition: background-color 0.5s ease;
+  padding: 10px 20px 0px 20px;
+  max-width: 900px;
+  height: auto;
+  margin: 5px auto;
+  text-align: left;
+}
+
+#poll:hover {
+  background-color: #a9d5fc;
+  border: 2px solid #99cefc;
+}
+
+#badge-poll{
+    padding: 4px 10px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#delete-poll{
+  float: right;
+  padding: 4px 12px;
+  margin: -2px 5px 0px 5px;
+  color: white;
+  font-size: 14px;
+  width: auto;
+  border-radius: 5px;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+#delete-poll:hover{
+  background-color: #c9302c;
+  border-color: #ac2925;
+  color: #333;
+}
+
+/****New Poll Modals****/
+
+#logbox {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 30px;
+  width: 600px;
+  height: auto;
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+#signup-heading {
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 150%;
+  color: #757575;
+  font-weight: 800;
+  font-family:'Helvetica';
+}
+
+.input, #social-media {
+  font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.input {
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin: 0 auto 15px;
+  padding: 0 15px;
+  border: none;
+  border-bottom: 2px solid #ebebeb;
+}
+.input:focus {
+  outline: none;
+  border-bottom-color: #3CC !important;
+}
+.input:hover {
+  border-bottom-color: #dcdcdc;
+}
+.input:invalid {
+  box-shadow: none;
+}
+
+.pass:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+.inputButton{
+  position: relative;
+  width: 75%;
+  height: 50px;
+  display: block;
+  margin: 10px auto 0 auto; 
+  color: white;
+  background-color: #3CC;
+  border: none;
+}
+
+/****PollInner Modals****/
+
+
+#poll-frame{
+  margin: 10px;
+  width: 90%;
+  
+}
+
+.poll-option {
+  position: relative;
+  background-color: #337ab7;
+  border: none;
+  transition: background-color 0.5s ease;
+  color: white;
+  display: block;
+  font-size: 1.5vmax;
+  font-weight: 600;
+  margin: 5px auto;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.poll-option:hover{ 
+  transition: background-color 0.5s ease;
+   background-color: #0f3b61;
+   color: white;
+}
+
+#poll-frame{
+  margin: 10px auto;
+}
+
+#newOptionP {
+  text-align: center;
+  font-size: 1.3vmax;
+  color: #757575;
+  font-weight: 700;
+  font-family: 'Helvetica';
+}
+
+#input-add{
+  height: 50%;
+  width: 100%;
+  margin: auto;
+}
+
+.formAdd{
+  border-radius: 0px;
+  border: 4px solid #757575;
+  font-weight: 700;
+  font-family: 'Helvetica';
+  font-size: 1.3vmax;
+  height: 50px;
+}
+
+#formInput:active,
+#formInput:focus,
+#formInput:visited{
+  border-color: #757575;
+}
+
+#formBtn{
+  margin-left: -3px;
+  margin-top: 0px;
+  background-color: #757575;
+  font-size: 1.1vmax;
+  font-weight: 600;
+}
+
+#formBtn:hover{
+  background-color: #3CC;
+  color: white;
+}
+
+
+/****Results*****/
+
+#myChart {
+  width: 50%;
+  height: auto;
+  margin: 15px auto;
+}
+
+#resultbox{
+  padding: 20px 30px;
+  margin: 100px 0 50px 25%;
+  width: 800px;
+  height: auto;
+  background-color: #fff;
+}
+
+#result-heading{
+    font-size: 200%;
+    color: #757575;
+    font-weight: 800;
+}
+
+#btn-vote{
+  background-color: #f1c40f;
+}
+
