@@ -13,8 +13,8 @@ var EventManager = require(path + '/app/controllers/eventManager.js');
   		if (req.isAuthenticated()) {
   			return next();
   		} else {
-  			req.user.username ==="undefined";
-  			next();
+  		  console.log("failed to log in!");
+  		  next();
   		}
   	}
   	
@@ -76,6 +76,14 @@ router.post('/deletepoll', isLoggedIn, eventManager.decreasePollCount,
 eventManager.removePoll, function(req, res){
   res.redirect('/success');
 });
+
+router.post('/guestaddoptionvotes', eventManager.addOptionVote,
+function(req,res){
+  res.render('poll-results', {
+    userTitle: undefined,
+    results: req.PollResults
+  });
+}); 
 
 router.post('/addoptionvotes', isLoggedIn, eventManager.addOptionVote,
 function(req,res){

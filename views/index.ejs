@@ -64,7 +64,7 @@
           <% for(var x = 0; x < opt.length; x++){ %>
           <% optionsIndex++ %>
         
-          <form method="post" action="/addoptionvotes" id="form-opt">
+          <form method="post" action="/guestaddoptionvotes" id="form-opt">
             <input class="hidden" name="id" value="<%= post._id%>"/>
             <input class="hidden" name="options" value="<%= post.polls[i].options%>"  />
             <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
@@ -73,22 +73,6 @@
             <input type="submit" value="<%= post.polls[i].options[x] %>" class="poll-option" />
           </form>
           <% } %>
-        
-          <% var recentOptIndex = recentIndex+1 %>
-          <h2 class="text-center" id="newOptionP">Don't like the options? Add your own!</h2>
-          <form method="post" action="/additionalopt">
-            <input class="hidden" name="id" value="<%= post._id%>"/>
-            <input class="hidden" name="question" value="<%= post.polls[i].question%>" />
-            <input class="hidden" name="title" value="<%= post.polls[i].title%>"  />
-            <input class="hidden" name="optionIndex" value="<%= recentOptIndex %>" />
-            <div class="input-group" id="input-add">
-              <input class="form-control formAdd" id="formInput" name="addOption" />
-              <div class="input-group-btn">
-                <input type="submit" id="formBtn" class="btn form-control formAdd" value="SEND" />
-              </div>
-            </div>
-          </form>
-        
         </div>
       </div>
     </div>
